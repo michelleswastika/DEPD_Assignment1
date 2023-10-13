@@ -62,51 +62,36 @@ class _RoomPageState extends State<RoomPage> {
               ],
             ),
             Container(
-              color: Colors.white,
-              width: double.infinity,
-              margin: EdgeInsets.all(8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'images/img2.jpeg',
-                      fit: BoxFit.fill,
-                      width: 115,
-                      height: 115,
-                    ),
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'images/img3.jpeg',
-                      fit: BoxFit.fill,
-                      width: 115,
-                      height: 115,
-                    ),
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'images/img4.jpeg',
-                      fit: BoxFit.fill,
-                      width: 115,
-                      height: 115,
-                    ),
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      'images/img5.jpeg',
-                      fit: BoxFit.fill,
-                      width: 115,
-                      height: 115,
-                    ),
-                  ),
-                ],
+  color: Colors.white,
+  width: double.infinity,
+  margin: EdgeInsets.all(8),
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: [
+      for (String imageAsset in [
+        'images/img2.jpeg',
+        'images/img3.jpeg',
+        'images/img4.jpeg',
+        'images/img5.jpeg',
+      ])
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(4.0), // Add space between images
+            child: AspectRatio(
+              aspectRatio: 1.0, // Set the aspect ratio to 1:1 (square)
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  imageAsset,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
+          ),
+        ),
+    ],
+  ),
+),
             Text(
               "Welcome to Golden Tulip Holland Batu",
               style: TextStyle(
